@@ -1,0 +1,37 @@
+{
+  "name": "practice-react",
+  "version": "0.1.0",
+  "description": "2 days React workshop",
+  "scripts": {
+    "start": "(cd docs && reveal-md $npm_package_config_main -w --theme custom)",
+    "build": "(cd docs && reveal-md $npm_package_config_main --static --theme custom)",
+    "clean": "rimraf docs/_static",
+    "deploy": "npm run clean && cd docs && npm run build && ls && npm run copyAssets && npm run surge",
+    "copyAssets": "cp -R docs/assets docs/_static/ && cp -R docs/theme docs/_static",
+    "surge": "surge -d $npm_package_config_deploy_domain -p docs/_static"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zacaria/practice-react.git"
+  },
+  "author": "Zacaria",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Zacaria/practice-react/issues"
+  },
+  "homepage": "https://github.com/Zacaria/practice-react#readme",
+  "dependencies": {
+    "reveal-md": "0.1.2"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "surge": "latest"
+  },
+  "config": {
+    "deploy_domain": "practice-some-react.surge.sh",
+    "main": "React.md"
+  },
+  "resolutions": {
+    "tar": "2.2.1"
+  }
+}
